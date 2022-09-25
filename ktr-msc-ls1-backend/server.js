@@ -4,11 +4,16 @@ const http = require("http")
 const mongoose = require("mongoose")
 require("dotenv").config()
 
+const UserRoutes = require("./routes/user.routes")
+
 const app = express()
 
 /* MIDDLEWARES */
 app.use(express.json())
 app.use(cors())
+
+/* ROUTES */
+app.use("/api/v1/user", UserRoutes)
 
 const server = http.createServer(app)
 const PORT = process.env.PORT || process.env.API_PORT
