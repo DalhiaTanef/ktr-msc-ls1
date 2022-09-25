@@ -28,8 +28,8 @@ module.exports.login = async (req, res) => {
 
         const user = await User.findOne({email})
 
-        if(await bcrypt.compare(password, user.password))
-            return res.status(200).send("User logged")
+        if(user && await bcrypt.compare(password, user.password))
+            return res.status(200).send(user)
         else
             return res.status(409).send("Error in credentials")
     }catch(error){

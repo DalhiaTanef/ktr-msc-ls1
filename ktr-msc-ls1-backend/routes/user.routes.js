@@ -45,10 +45,10 @@ const addCardSchema = Joi.object({
 router.post("/register", validator.body(registerSchema), UserController.register)
 
 /**
- * GET: /api/v1/user/login
+ * POST: /api/v1/user/login
  * Purpose: Login a user
  */
-router.get("/login", validator.body(loginSchema), UserController.login)
+router.post("/login", validator.body(loginSchema), UserController.login)
 
 /**
  * PATCH: /api/v1/user/card
@@ -57,9 +57,9 @@ router.get("/login", validator.body(loginSchema), UserController.login)
 router.patch("/card", validator.body(addCardSchema), UserController.addCard)
 
 /**
- * get: /api/v1/user/cards
+ * PATCH: /api/v1/user/cards
  * Purpose: get cards
  */
-router.get("/cards", UserController.getCards);
+router.patch("/cards", UserController.getCards);
 
 module.exports = router
